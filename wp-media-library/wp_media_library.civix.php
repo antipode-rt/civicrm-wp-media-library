@@ -92,10 +92,12 @@ function _wp_media_library_civix_civicrm_config($config = NULL) {
   }
   $configured = TRUE;
 
-  $extRoot = __DIR__ . DIRECTORY_SEPARATOR;
-  $include_path = $extRoot . PATH_SEPARATOR . get_include_path();
-  set_include_path($include_path);
-  // Based on <compatibility>, this does not currently require mixin/polyfill.php.
+  $template =& CRM_Core_Smarty::singleton();
+
+  $extRoot = dirname(__FILE__) . DIRECTORY_SEPARATOR;
+  $extDir = $extRoot . 'templates';
+  $template->addTemplateDir($extDir);
+  
 }
 
 /**
